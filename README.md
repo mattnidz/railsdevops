@@ -1,7 +1,5 @@
 # README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails & Devops
 
 * Ruby version
 2.5.3
@@ -13,7 +11,9 @@ application up and running.
 
 
 * Database creation
-
+1. Login using pgsql or psql `psql -U postgres -d postgres`
+1. `CREATE DATABASE development_database;`
+1. `CREATE ROLE devuser LOGIN NOSUPERUSER INHERIT CREATEDB CREATEROLE;`
 
 * Database initialization
 
@@ -25,4 +25,3 @@ application up and running.
 
 
 * Deployment instructions
-

@@ -7,17 +7,17 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: <%= ENV['DB_USER'] %>
-  password: <%= ENV['DB_PSWD'] %>
-  host: <%= ENV['DB_HOST'] %>
-  port: <%= ENV['DB_PORT'] %>
+  username: devuser
+  password: <%= ENV["SECRET_KEY"]%>
+  host: localhost
+  port: 5432
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  database: <%= ENV['DB_NAME'] %>
+  database: development_database
 
 test:
   <<: *default
