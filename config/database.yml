@@ -4,11 +4,14 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 #
+
+
+
 default: &default
   adapter: postgresql
   encoding: unicode
   username: devuser
-  password: <%= ENV["SECRET_KEY"]%>
+  password: <%= ENV["SECRET_KEY"] %>
   host: localhost
   port: 5432
   # For details on connection pooling, see rails configuration guide

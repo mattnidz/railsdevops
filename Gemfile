@@ -9,6 +9,7 @@ gem 'rails', '~> 5.2.1'
 #gem 'sqlite3'
 # Use PG
 gem 'pg'
+gem "http"
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

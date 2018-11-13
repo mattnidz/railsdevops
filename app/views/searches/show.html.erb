@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Search:</strong>
+  <%= @search.search %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= SearchesHelper.result(@term, @location) %>
+</p>
+
+
+<%= link_to 'Edit', edit_search_path(@search) %> |
+<%= link_to 'Back', searches_path %>

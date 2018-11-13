@@ -16,6 +16,7 @@ Rails & Devops
 1. `CREATE ROLE devuser LOGIN NOSUPERUSER INHERIT CREATEDB CREATEROLE;`
 
 * Database initialization
+1. `rake db:migrate`
 
 
 * How to run the test suite

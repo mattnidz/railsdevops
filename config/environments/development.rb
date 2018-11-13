@@ -6,6 +6,16 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+    config_files = ['secrets.yml']
+
+    config_files.each do |file_name|
+      file_path = File.join(Rails.root, 'config', file_name)
+      config_keys = HashWithIndifferentAccess.new(YAML::load(IO.read(file_path)))[Rails.env]
+      config_keys.each do |k,v|
+        ENV[k.upcase] ||= v
+      end
+    end
+
   # Do not eager load code on boot.
   config.eager_load = false
 

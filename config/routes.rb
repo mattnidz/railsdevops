@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :searches
   resources :users
   #get 'welcome/index'
   match ':controller(/:action(/:id))', :via => :get
