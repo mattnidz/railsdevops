@@ -7,6 +7,16 @@ Rails.application.configure do
   # and recreated between test runs. Don't rely on the data there!
   config.cache_classes = true
 
+  config_files = ['secrets.yml']
+
+  config_files.each do |file_name|
+    file_path = File.join(Rails.root, 'config', file_name)
+    config_keys = HashWithIndifferentAccess.new(YAML::load(IO.read(file_path)))[Rails.env]
+    config_keys.each do |k,v|
+      ENV[k.upcase] ||= v
+    end
+  end
+
   # Do not eager load code on boot. This avoids loading your whole application
   # just for the purpose of running a single test. If you are using a tool that
   # preloads Rails for running tests, you may have to set it to true.

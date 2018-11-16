@@ -2,14 +2,25 @@
 
 <p>
   <strong>Search:</strong>
-  <%= @search.search %>
+  <%= "\"#{@term}\" places found in #{@location}" %>
 </p>
 
-<p>
-  <strong>Result:</strong>
-  <%= SearchesHelper.result(@term, @location) %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th>Results </th>
 
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @yelpjson.result("#{@term}", "#{@location}").each do |f| %>
+      <tr>
+        <td><%= f %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_search_path(@search) %> |
 <%= link_to 'Back', searches_path %>

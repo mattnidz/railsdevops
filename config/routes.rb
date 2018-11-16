@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  resources :searches
+  resources :widgets
+  get 'widget/search'
   resources :users
-  #get 'welcome/index'
+  resources :searches do
+    end
+  
+
+    
+
   match ':controller(/:action(/:id))', :via => :get
   #match 'welcome/index', to: 'welcome:show', via: :all
   root 'welcome#index'

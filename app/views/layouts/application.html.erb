@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Railsdevops</title>
+    <title><%= yield(:title) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+
+  <div id="wrapper">
+  <header>
+  <%= link_to image_tag("rails-logo.jpg",  alt: "rails logo"),
+            {:controller => 'welcome', :action => 'home'},
+            {:class => 'websiteLogo'} %>
+ 
+  </header>
+  <nav id="horzNav">
+ 
+    <p>
+      <%= link_to 'Home', {:controller => 'welcome', :action => 'index'} %>
+      <%= link_to 'Yelp Searches', {:controller => 'searches', :action => 'index'} %>
+      <%= link_to 'Users', {:controller => 'users', :action => 'index'} %>
+    </p>
+ 
+</nav>
+
+  <main id="content">
+
     <%= yield %>
+
+    </main>
+    </div> <!-- END OF WRAPPER -->
   </body>
 </html>

@@ -10,24 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_13_205235) do
+ActiveRecord::Schema.define(version: 2018_11_14_183350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "restaurants", force: :cascade do |t|
-    t.string "search"
-    t.text "result"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "resturants", force: :cascade do |t|
-    t.string "search"
-    t.text "result"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "searches", force: :cascade do |t|
     t.string "search"
@@ -38,6 +24,13 @@ ActiveRecord::Schema.define(version: 2018_11_13_205235) do
   create_table "users", force: :cascade do |t|
     t.string "password"
     t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "widgets", force: :cascade do |t|
+    t.string "search"
+    t.text "result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

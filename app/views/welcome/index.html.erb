@@ -1,12 +1,39 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<% provide(:title, "Welcome") %>
+<h1>Home</h1>
+<!--p>Find me in app/views/welcome/index.html.erb</p-->
 
+<h3> A Practice Ruby on Rails application. </h3>
 
-<%= "Count to 10" %>
-<br/>
-<% 11.times do |i| %>
-  <%= i %>
-  <% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Using these tools:</th>
+    </tr>
+  </thead>
 
-<!--p><%= ENV["SECRET_KEY"]%> </p-->
+  <tbody>
+    <td>Ruby - 2.5.3</td>
+    </tr>
+    <tr>
+    <td>Rails - 5.2.1</td></tr>
+    <tr>
+    <td>Postgresql</td>
+    </tr>
+    <tr>
+    <td>Puma</td>
+    </tr>
+    <tr>
+    <td>Docker</td>
+    </tr>
+    <tr>
+    <td>Kubernetes</td>
+    </tr>
+    <tr>
+    <td>VSCode</td>
+    </tr>
+    <tr>
+    <td>Github</td>
+    </tr>
+  </tbody>
+</table>
 

@@ -1,44 +1,12 @@
 
- 
- require 'searches_helper'
+
 class SearchesController < ApplicationController
-  before_action :set_search, only: [:show, :edit, :update, :destroy]
-  # require 'http'
-  #helper :searches_helper
   
+  before_action :set_search, only: [:show, :edit, :update, :destroy]
+  include WidgetsHelper
+  DEFAULT_TERM = "burgers"
+  DEFAULT_LOCATION = "San Francisco, CA"
 
-# # Constants, do not change these
-API_HOST = "https://api.yelp.com"
-SEARCH_PATH = "/v3/businesses/search"
-BUSINESS_PATH = "/v3/businesses/"  # trailing / because we append the business id to the path
-
-
-DEFAULT_BUSINESS_ID = "yelp-san-francisco"
-DEFAULT_TERM = "dinner"
-DEFAULT_LOCATION = "San Francisco, CA"
-SEARCH_LIMIT = 5
-
-# # Returns a parsed json object of the request
-# def result(term, location)
-#   url = "#{API_HOST}#{SEARCH_PATH}"
-#   params = {
-#     term: term,
-#     location: location,
-#     limit: SEARCH_LIMIT
-#   }
-
-#   response = HTTP.auth("Bearer #{API_KEY}").get(url, params: params)
-#   response.parse
-# end
-
-
-# # Returns a parsed json object of the request
-# def business(business_id)
-#   url = "#{API_HOST}#{BUSINESS_PATH}#{business_id}"
-
-#   response = HTTP.auth("Bearer #{API_KEY}").get(url)
-#   response.parse
-# end
 
 
   # GET /searches
@@ -50,13 +18,26 @@ SEARCH_LIMIT = 5
   # GET /searches/1
   # GET /searches/1.json
   def show
-    @term = @search.search
     @location = DEFAULT_LOCATION
+    @term =  @search.search
+   # @searches = @search.search(DEFAULT_TERM,DEFAULT_LOCATION)
+    # @search.search(DEFAULT_TERM,DEFAULT_LOCATION)
+    #@yelpjson = SearchesHelper.result(DEFAULT_TERM, DEFAULT_LOCATION)
+    # render :json => @yelpjson.to_json
+    @yelpjson = Search.all
 
-    # response = SearchesHelper.result(DEFAULT_TERM, DEFAULT_LOCATION)
-    # puts "Found #{response["total"]} businesses. Listing #{SEARCH_LIMIT}:"
-    # response["businesses"].each {|biz| puts biz["name"]}
-   
+    respond_to do |format|
+      format.html { render :show}
+      format.json { render :show, json: @yelpjson.to_json }
+    # if @yelpjson
+    #   format.html { redirect_to @yelpjson, notice: 'Search was successfully created.' }
+    #   format.json { render :json: @yelpjson }
+    # else
+    #   format.html { render :new }
+    #   format.json { render :json @yelpjson }
+    # end
+  end
+
   end
 
   # GET /searches/new
