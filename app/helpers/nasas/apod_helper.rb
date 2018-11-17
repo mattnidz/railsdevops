@@ -1,0 +1,2 @@
+module Nasas::ApodHelper
+end

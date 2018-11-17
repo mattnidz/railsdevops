@@ -25,7 +25,6 @@ class SearchesController < ApplicationController
     #@yelpjson = SearchesHelper.result(DEFAULT_TERM, DEFAULT_LOCATION)
     # render :json => @yelpjson.to_json
     @yelpjson = Search.all
-
     respond_to do |format|
       format.html { render :show}
       format.json { render :show, json: @yelpjson.to_json }

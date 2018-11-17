@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Api:</strong>
+  <%= @nasa.api %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @nasa.url %>
+</p>
+
+<%= link_to 'Edit', edit_nasa_path(@nasa) %> |
+<%= link_to 'Back', nasas_path %>

@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_14_183350) do
+ActiveRecord::Schema.define(version: 2018_11_17_170531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "apods", force: :cascade do |t|
+    t.string "copyright"
+    t.string "date"
+    t.string "explanation"
+    t.string "hdurl"
+    t.string "media_type"
+    t.string "service_version"
+    t.string "title"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "nasas", force: :cascade do |t|
+    t.string "api"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "searches", force: :cascade do |t|
     t.string "search"

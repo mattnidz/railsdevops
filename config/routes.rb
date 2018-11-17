@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  # namespace :nasas do
+  #   get 'apod/display'
+  # end
+  # namespace :nasa do
+  #   get 'apod/display'
+  # end
+  resources :nasas
+
   resources :widgets
   get 'widget/search'
   resources :users
@@ -6,7 +14,7 @@ Rails.application.routes.draw do
     end
   
 
-    
+get '/apod', to: "nasas#apod"
 
   match ':controller(/:action(/:id))', :via => :get
   #match 'welcome/index', to: 'welcome:show', via: :all

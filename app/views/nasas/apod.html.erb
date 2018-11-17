@@ -1,0 +1,25 @@
+
+<h1> Astronomy Picture of the Day (APOD) microservice </h1>
+
+<b>Title:</b>
+<style>
+h2 { color: blue; text-indent: 10px;}
+</style>
+<h2> 
+<%= "    \"#{@json_string[0]["title"]} \" " %>
+</h2>
+<b>Description:</b>
+<br>
+<%= "#{@json_string[0]["explanation"]}" %>
+
+
+<%= image_tag("#{@json_string[0]['url']}", draggable: "true", id: "drag1") %>
+
+
+
+
+
+
+
+
+
