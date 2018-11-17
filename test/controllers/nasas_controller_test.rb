@@ -45,4 +45,12 @@ class NasasControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to nasas_url
   end
+
+
+  test "should get apod" do
+    nasas_apod_url = "/apod"
+    get nasas_apod_url
+    assert_response :success
+  end
+
 end
