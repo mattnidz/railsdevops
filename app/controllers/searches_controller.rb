@@ -3,7 +3,7 @@
 class SearchesController < ApplicationController
   
   before_action :set_search, only: [:show, :edit, :update, :destroy]
-  include WidgetsHelper
+  
   DEFAULT_TERM = "burgers"
   DEFAULT_LOCATION = "San Francisco, CA"
 
@@ -18,23 +18,21 @@ class SearchesController < ApplicationController
   # GET /searches/1
   # GET /searches/1.json
   def show
-    @location = DEFAULT_LOCATION
-    @term =  @search.search
+    #@location = DEFAULT_LOCATION
+    #@term =  @search.search
    # @searches = @search.search(DEFAULT_TERM,DEFAULT_LOCATION)
     # @search.search(DEFAULT_TERM,DEFAULT_LOCATION)
     #@yelpjson = SearchesHelper.result(DEFAULT_TERM, DEFAULT_LOCATION)
     # render :json => @yelpjson.to_json
-    @yelpjson = Search.all
+    #@yelpjson = Search.all
+    @yelp_url = Search.yelpurl(@search.search,DEFAULT_LOCATION)
+
     respond_to do |format|
-      format.html { render :show}
-      format.json { render :show, json: @yelpjson.to_json }
-    # if @yelpjson
-    #   format.html { redirect_to @yelpjson, notice: 'Search was successfully created.' }
-    #   format.json { render :json: @yelpjson }
-    # else
-    #   format.html { render :new }
-    #   format.json { render :json @yelpjson }
-    # end
+      # format.html { render :show}
+      # format.json { render :show, json: @yelpjson.to_json }
+        format.html { render :show}
+        format.json { render :show, json: @yelp_url.to_json }
+
   end
 
   end

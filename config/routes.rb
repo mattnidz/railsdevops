@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   # end
   resources :nasas
 
-  resources :widgets
-  get 'widget/search'
   resources :users
   resources :searches do
     end

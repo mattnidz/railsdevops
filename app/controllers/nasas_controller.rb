@@ -61,30 +61,30 @@ class NasasController < ApplicationController
     end
   end
 
-
-  def apod
+  
+def apod
     
     @json_string = Apod.result()
-    @picture_url = Apod.url()
+@picture_url = Apod.url()
     
-      respond_to do |format|
-        
-        format.html { render :apod}
-        format.json { render :apod, json: @json_string.to_json }
-        format.json { render :apod, json: @picture_url.to_json }
-
-      end
-
+respond_to do |format|
+      
+      format.html { render :apod}
+      format.json { render :apod, json: @json_string.to_json }
+format.json { render :apod, json: @picture_url.to_json }
+    
+end
+  
+end
+  
+private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_nasa
+    @nasa = Nasa.find(params[:id])
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_nasa
-      @nasa = Nasa.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def nasa_params
-      params.require(:nasa).permit(:api, :url)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def nasa_params
+    params.require(:nasa).permit(:api, :url)
+  end
 end

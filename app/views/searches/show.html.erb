@@ -1,26 +1,40 @@
 <p id="notice"><%= notice %></p>
 
+
+<h1> Yelp Searches </h1>
+<br>
 <p>
   <strong>Search:</strong>
-  <%= "\"#{@term}\" places found in #{@location}" %>
+  <%= @search.search %>
 </p>
+<br>
+<b>Results:</b>
+<style>
+h2 { color: blue; text-indent: 10px;}
+</style>
 
-<table>
-  <thead>
-    <tr>
-      <th>Results </th>
 
-    </tr>
-  </thead>
+<% @yelp_url.each do |n| %>
 
-  <tbody>
-    <% @yelpjson.result("#{@term}", "#{@location}").each do |f| %>
-      <tr>
-        <td><%= f %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h2> 
+<%= link_to n["name"], n["url"] %>
+</h2>
+<b> Rating:</b>
+<%= "#{n["rating"]}" %>
+<br>
+<b>Location:</b> 
+<%= "#{n["location"]}" %>
+<br>
+<b>Phone:</b> 
+<%= "#{n["display_phone"]}" %>
+<br>
+<b>Url:</b> 
+<%= link_to n["name"], n["url"] %>
+<br>
+<%= image_tag("#{n['image_url']}", draggable: "true", id: "drag1") %>
+<br>
+<%end%>
+<br>
 
 
 <%= link_to 'Edit', edit_search_path(@search) %> |
